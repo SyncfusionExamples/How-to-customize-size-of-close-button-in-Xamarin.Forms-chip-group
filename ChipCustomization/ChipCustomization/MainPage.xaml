@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local="clr-namespace:ChipCustomization"
+             x:Class="ChipCustomization.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Customized close button size" Margin="0,30,0,30" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <buttons:SfChipGroup x:Name="chipGroup1"
+				ItemsSource="{Binding Languages}"
+                ChipBorderWidth="0">
+                <buttons:SfChipGroup.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <!--close button width-->
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label HorizontalOptions="Center" FontSize="30" Grid.Column="1" VerticalOptions="Center">
+                                <Label.Text>
+                                    <OnPlatform Default="&#xe742;" UWP="&#xeB90;"/>
+                                </Label.Text>
+                                <Label.FontFamily>
+                                    <OnPlatform iOS="V1 Font Material icon" Android="ChipGroupFontIcon.ttf#V1 Font Material icon"
+                                                UWP="/Assets/ChipGroupFontIcon.ttf#Segoe MDL2 Assets"/>
+                                </Label.FontFamily>
+                                <!--To recognize the close button tap to remove the item from the chipgroup-->
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CloseButtonTapped}" CommandParameter="{x:Reference viewModel}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </buttons:SfChipGroup.ItemTemplate>
+            </buttons:SfChipGroup>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
