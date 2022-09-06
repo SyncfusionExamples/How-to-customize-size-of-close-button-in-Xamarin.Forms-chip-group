@@ -9,7 +9,7 @@ This project uses the following Syncfusion controls:
 * [SfChip](https://www.syncfusion.com/xamarin-ui-controls/xamarin-chips) - To display chip and chip group and customize the close button of chip
 
 ## Screenshots
-<img src="Images\Close-Button-Customization.gif"  Width="250"/> 
+<img src="Images/ChipCustomization.png"  Width="250"/> 
 
 ## Supported platforms
 
